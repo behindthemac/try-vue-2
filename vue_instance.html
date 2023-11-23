@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My first Vue app</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ foo }}</p>
+      <button v-on:click="foo = 'baz'">Change it</button>
+    </div>
+
+    <script>
+      var data = { a: 1 };
+
+      var vm = new Vue({
+        data: data,
+      });
+
+      console.log(`vm.a == data.a => ${vm.a == data.a}`);
+
+      vm.a = 2;
+      console.log(`data.a => ${data.a}`);
+
+      data.a = 3;
+      console.log(`vm.a => ${vm.a}`);
+
+      var obj = {
+        foo: "bar",
+      };
+
+      Object.freeze(obj);
+
+      new Vue({
+        el: "#app",
+        data: obj,
+      });
+    </script>
+  </body>
+</html>
